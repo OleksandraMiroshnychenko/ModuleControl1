@@ -1,8 +1,16 @@
 import pytest
 from unittest.mock import MagicMock
+from tkinter import Tk
 from task_manager import TaskManager  # або ваш шлях до файлу
 
-def test_add_task():
+@pytest.fixture
+def setup_tkinter():
+    # Створюємо кореневе вікно для тестів
+    root = Tk()
+    yield root  # Повертаємо root, щоб він був доступний у тестах
+    root.quit()  # Закриваємо кореневе вікно після тесту
+
+def test_add_task(setup_tkinter):
     mock_root = MagicMock()  # Створюємо мок-об'єкт для root
     manager = TaskManager(mock_root)  # Тепер передаємо мок в конструктор
 
