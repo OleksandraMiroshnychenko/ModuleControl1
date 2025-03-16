@@ -27,7 +27,7 @@ class TaskManager:
 
             # Створюємо Listbox для відображення задач.
             task_listbox = tk.Listbox(frame, width=30, height=10)
-            task_listbox.pack(padx=5, pady=5)  # Розміщуємо Listbox.
+            task_listbox.pack(padx=5, pady=5)  
             task_listbox.bind("<Double-Button-1>", self.edit_task)  # Подвійний клік для редагування задачі.
             task_listbox.bind("<ButtonPress-1>", self.start_drag)  # Натискання для початку перетягування.
             task_listbox.bind("<ButtonRelease-1>", self.drop_task)  # Відпускання для переміщення задачі.
@@ -44,8 +44,8 @@ class TaskManager:
         self.source_listbox = None
 
     def add_task(self, list_name):
-        # Додає нову задачу до списку через діалогове вікно.
-        task = simpledialog.askstring("Нова задача", "Введіть назву задачі:")  # Запитуємо назву задачі.
+        
+        task = simpledialog.askstring("Нова задача", "Введіть назву задачі:") 
         if task:  # Якщо введено назву задачі.
             self.lists[list_name].append(task)  # Додаємо задачу в список.
             self.listboxes[list_name].insert(tk.END, task)  # Вставляємо задачу в Listbox.
@@ -91,7 +91,6 @@ class TaskManager:
         self.dragging_task = None  # Скидаємо вибрану задачу.
         self.source_listbox = None  # Скидаємо джерело перетягування.
 
-# Перевіряємо, чи є запуск програми.
 if __name__ == "__main__":
     root = tk.Tk()  # Створюємо головне вікно.
     app = TaskManager(root)  # Ініціалізуємо менеджер задач.
