@@ -1,9 +1,12 @@
 name: Run tests
 
 on:
-  push:
-    branches:
-      - "*"
+    push:
+      branches:
+        - feature/feature_branch 
+    pull_request:
+      branches:
+        - feature/feature_branch
 
 jobs:
   test:
